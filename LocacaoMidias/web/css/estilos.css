@@ -32,3 +32,15 @@ a:hover {
 .alinharDireita {
     text-align: right;
 }
+
+a:link {
+  color:white;
+  background-color:white;
+  text-decoration:none;
+}
+
+a:link {
+  color:black;
+  background-color:black;
+  text-decoration:none;
+}

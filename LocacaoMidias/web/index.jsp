@@ -5,7 +5,7 @@
 
 <html>
     <head>
-        <title>Sistema para Cadastro de DVD's</title>
+        <title>Sistema para Cadastro e Locação de Mídias</title>
         <meta charset="UTF-8">
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0">
@@ -20,65 +20,44 @@
     <body style="background-image: url(fundo.gif);text-align: center;margin-top: 10%;">
 
         <h1 style="color: white">Sistema para Locação de Mídias</h1>
-        <div style="text-align: center;">
 
-            <div class = "row align-middle">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="classificacao.jpg" alt="Card image cap" >
-                    <div class="card-body">
-                        <a href="${cp}/formularios/classificacao/listagem.jsp" class="btn btn-secondary btn-lg">Classificação Etária</a>
-                    </div>
+        <div class="card-group col-8 p-5" style="width: 100%">
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body text-center">
+                    <a href="${cp}/formularios/classificacao/listagem.jsp" class="linkum" >Classificação Etária</a>
                 </div>
+            </div>
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body text-center">
+                    <a href="${cp}/formularios/atores/listagem.jsp" class="linkdois" >Atores</a>
+                </div>
+            </div>
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body text-center" >
+                    <a href="${cp}/formularios/dvds/listagem.jsp" class="linkum" >Mídias</a>
+                </div>
+            </div>
 
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>  
-        <div class="card-columns">
-            <div class="card bg-primary">
-                <div class="card-body text-center">
-                    <a href="${cp}/formularios/classificacao/listagem.jsp" >Classificação Etária</a>
-                </div>
-            </div>
-            <div class="card bg-warning">
-                <div class="card-body text-center">
-                    <p class="card-text">Some text inside the second card</p>
-                </div>
-            </div>
-            <div class="card bg-success">
-                <div class="card-body text-center">
-                    <p class="card-text">Some text inside the third card</p>
-                </div>
-            </div>
-            <div class="card bg-danger">
-                <div class="card-body text-center">
-                    <p class="card-text">Some text inside the fourth card</p>
-                </div>
-            </div>
-            <div class="card bg-light">
-                <div class="card-body text-center">
-                    <p class="card-text">Some text inside the fifth card</p>
-                </div>
-            </div>
-            <div class="card bg-info">
-                <div class="card-body text-center">
-                    <p class="card-text">Some text inside the sixth card</p>
-                </div>
-            </div>
         </div>
 
+        <div class="card-group col-8 p-5" style="width: 100%">
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body text-center">
+                    <a href="${cp}/formularios/clientes/listagem.jsp" class="linkum" >Cliente</a>
+                </div>
+            </div>
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body text-center">
+                    <a href="${cp}/formularios/cidades/listagem.jsp" class="linkdoois">Cidade</a>
+                </div>
+            </div>
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body text-center" >
+                    <a href="${cp}/formularios/estados/listagem.jsp" class="linkum" >Estado</a>
+                </div>
+            </div>
 
-        <a href="${cp}/formularios/atores/listagem.jsp" class="btn btn-secondary btn-lg">Atores</a>
-
-        <a href="${cp}/formularios/generos/listagem.jsp" class="btn btn-secondary btn-lg">Gêneros</a>
-
-        <a href="${cp}/formularios/dvds/listagem.jsp" class="btn btn-secondary btn-lg">DVD's</a>
-
-
+        </div>
 
     </body>
 

@@ -1,5 +1,6 @@
-package locacaomidias.jdbc;
+package locacaomidias.servicos;
 
+import locacaomidias.jdbc.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

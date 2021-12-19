@@ -16,7 +16,7 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
     public void salvar(ClassificacaoEtaria obj) throws SQLException {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "INSERT INTO " + 
-                "classificacao (descricao) " + 
+                "classificacao_etaria (descricao) " + 
                 "VALUES(?);" );
 
         stmt.setString( 1, obj.getDescricao());
@@ -28,7 +28,7 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
     @Override
     public void atualizar(ClassificacaoEtaria obj) throws SQLException {
         PreparedStatement stmt = getConnection().prepareStatement(
-                "UPDATE classificacao " + 
+                "UPDATE classificacao_etaria " + 
                 "SET" + 
                 "    descricao = ?" + 
                 "WHERE" + 
@@ -44,7 +44,7 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
     @Override
     public void excluir(ClassificacaoEtaria obj) throws SQLException {
         PreparedStatement stmt = getConnection().prepareStatement(
-                "DELETE FROM classificacao " + 
+                "DELETE FROM classificacao_etaria " + 
                 "WHERE" + 
                 "    id = ?;" );
 
@@ -61,7 +61,7 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT *" + 
                 "FROM" + 
-                "    classificacao c " + 
+                "    classificacao_etaria c " + 
                 "ORDER BY c.descricao" );
 
         ResultSet rs = stmt.executeQuery();
@@ -89,7 +89,7 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT *" + 
                 "FROM" + 
-                "    classificacao c " + 
+                "    classificacao_etaria c " + 
                 "WHERE" + 
                 "    c.id = ?;" );
 

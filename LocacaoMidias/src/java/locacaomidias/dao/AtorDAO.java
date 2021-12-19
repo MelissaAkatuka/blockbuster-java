@@ -16,7 +16,7 @@ public class AtorDAO extends DAO<Ator> {
     public void salvar(Ator obj) throws SQLException {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "INSERT INTO " + 
-                "atores(nome, sobrenome, data_estreia) " + 
+                "ator_atriz (nome, sobrenome, dataEstreia) " + 
                 "VALUES(?, ?, ?);" );
 
         stmt.setString( 1, obj.getNome() );
@@ -30,11 +30,11 @@ public class AtorDAO extends DAO<Ator> {
     @Override
     public void atualizar(Ator obj) throws SQLException {
         PreparedStatement stmt = getConnection().prepareStatement(
-                "UPDATE atores " + 
+                "UPDATE ator_atriz " + 
                 "SET" + 
                 "    nome = ?," + 
                 "    sobrenome = ?," + 
-                "    data_estreia = ?" + 
+                "    dataEstreia = ?" + 
                 "WHERE" + 
                 "    id = ?;" );
 
@@ -50,7 +50,7 @@ public class AtorDAO extends DAO<Ator> {
     @Override
     public void excluir(Ator obj) throws SQLException {
         PreparedStatement stmt = getConnection().prepareStatement(
-                "DELETE FROM atores " + 
+                "DELETE FROM ator_atriz " + 
                 "WHERE" + 
                 "    id = ?;" );
 
@@ -67,7 +67,7 @@ public class AtorDAO extends DAO<Ator> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT *" + 
                 "FROM" + 
-                "    atores a " + 
+                "    ator_atriz a " + 
                 "ORDER BY a.nome" );
 
         ResultSet rs = stmt.executeQuery();
@@ -78,7 +78,7 @@ public class AtorDAO extends DAO<Ator> {
             ator.setId(rs.getInt( "id" ));
             ator.setNome(rs.getString( "nome" ));
             ator.setSobrenome(rs.getString( "sobrenome" ));
-            ator.setDataEstreia(rs.getDate("data_estreia"));
+            ator.setDataEstreia(rs.getDate("dataEstreia"));
             lista.add( ator );
 
         }
@@ -98,7 +98,7 @@ public class AtorDAO extends DAO<Ator> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT *" + 
                 "FROM" + 
-                "    atores a " + 
+                "    ator_atriz a " + 
                 "WHERE" + 
                 "    a.id = ?;" );
 
@@ -112,7 +112,7 @@ public class AtorDAO extends DAO<Ator> {
             ator.setId(rs.getInt( "id" ));
             ator.setNome(rs.getString( "nome" ));
             ator.setSobrenome(rs.getString( "sobrenome" ));
-            ator.setDataEstreia(rs.getDate("data_estreia"));
+            ator.setDataEstreia(rs.getDate("dataEstreia"));
 
         }
 
