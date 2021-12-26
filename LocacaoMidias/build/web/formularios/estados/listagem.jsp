@@ -62,12 +62,6 @@
       
     </table>
 
-    <p>
-      <a href="${cp}/formularios/estados/novo.jsp">
-        Novo Estado
-      </a>
-    </p>
-
     <p><a href="${cp}/index.jsp">Tela Principal</a></p>
 
   </body>

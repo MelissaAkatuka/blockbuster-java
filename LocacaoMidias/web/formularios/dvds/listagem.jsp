@@ -6,7 +6,7 @@
 
 <html>
   <head>
-    <title>DVD's Cadastrados</title>
+    <title>Mídias Cadastrados</title>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
@@ -16,11 +16,11 @@
 
   <body>
 
-    <h1>DVD's Cadastrados</h1>
+    <h1>Mídias Cadastradas</h1>
 
     <p>
       <a href="${cp}/formularios/dvds/novo.jsp">
-        Novo DVD
+        Nova Mídia
       </a>
     </p>
 

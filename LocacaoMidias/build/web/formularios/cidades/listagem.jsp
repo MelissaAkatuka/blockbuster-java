@@ -61,12 +61,6 @@
       </tbody>
     </table>
 
-    <p>
-      <a href="${cp}/formularios/cidades/novo.jsp">
-        Nova Cidade
-      </a>
-    </p>
-
     <p><a href="${cp}/index.jsp">Tela Principal</a></p>
 
   </body>

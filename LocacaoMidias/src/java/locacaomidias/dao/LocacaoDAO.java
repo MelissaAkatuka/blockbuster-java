@@ -34,7 +34,7 @@ public class LocacaoDAO extends DAO<Locacao>{
         stmt.setBoolean(3, obj.getCancelada());
         
         stmt.executeUpdate();
-        obj.setId( Utils.getChavePrimariaAposInsercao( stmt, "id" ) );
+        obj.setId( Integer.parseInt(Utils.getChavePrimariaAposInsercao( stmt, "id" ).toString()) );
         stmt.close();
     }
 
@@ -111,6 +111,7 @@ public class LocacaoDAO extends DAO<Locacao>{
 //        stmt.close();
 //
 //        return lista;
+    return null;
     }
 
     @Override

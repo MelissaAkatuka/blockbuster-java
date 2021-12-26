@@ -21,43 +21,97 @@
 
         <h1 style="color: white">Sistema para Locação de Mídias</h1>
 
-        <div class="card-group col-8 p-5" style="width: 100%">
+        <div class="card-group p-5" style="width: 100%">
+
             <div class="card text-white bg-dark mb-3">
                 <div class="card-body text-center">
-                    <a href="${cp}/formularios/classificacao/listagem.jsp" class="linkum" >Classificação Etária</a>
+                    <a href="${cp}/formularios/classificacao/listagem.jsp" style="color: #C0C0C0;">Classificações Etárias</a>
                 </div>
             </div>
             <div class="card text-white bg-secondary mb-3">
                 <div class="card-body text-center">
-                    <a href="${cp}/formularios/atores/listagem.jsp" class="linkdois" >Atores</a>
+                    <a href="${cp}/formularios/atores/listagem.jsp" style="color: #363636;" >Atores</a>
                 </div>
             </div>
             <div class="card text-white bg-dark mb-3">
                 <div class="card-body text-center" >
-                    <a href="${cp}/formularios/dvds/listagem.jsp" class="linkum" >Mídias</a>
+                    <a href="${cp}/formularios/dvds/listagem.jsp" style="color: #C0C0C0;" >Mídias</a>
+                </div>
+            </div>
+
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body text-center">
+                    <a href="${cp}/formularios/clientes/listagem.jsp" style="color: #363636;" >Clientes</a>
+                </div>
+            </div>
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body text-center">
+                    <a href="${cp}/formularios/cidades/listagem.jsp" style="color: #C0C0C0;">Cidades</a>
+                </div>
+            </div>
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body text-center" >
+                    <a href="${cp}/formularios/estados/listagem.jsp" style="color: #363636;" >Estados</a>
+                </div>
+            </div>
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body text-center">
+                    <a href="${cp}/formularios/classificacaointerna/listagem.jsp" style="color: #C0C0C0;">Classificações Internas</a>
+                </div>
+            </div>
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body text-center">
+                    <a href="${cp}/formularios/tipos/listagem.jsp" style="color: #363636;">Tipos</a>
                 </div>
             </div>
 
         </div>
 
-        <div class="card-group col-8 p-5" style="width: 100%">
-            <div class="card text-white bg-dark mb-3">
-                <div class="card-body text-center">
-                    <a href="${cp}/formularios/clientes/listagem.jsp" class="linkum" >Cliente</a>
+        <div id="carouselExampleControls" class="carousel slide p-5" data-mdb-ride="carousel" style="width: 80%; margin-left: 8%">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img
+                        src="series.jpg"
+                        class="d-block w-100"
+                        alt="Series"
+                        />
+                </div>
+                <div class="carousel-item">
+                    <img
+                        src="documentarios.jpg"
+                        class="d-block w-100"
+                        alt="Documentarios"
+                        />
+                </div>
+                <div class="carousel-item">
+                    <img
+                        src="filmes.jpg"
+                        class="d-block w-100"
+                        alt="Filmes"
+                        />
                 </div>
             </div>
-            <div class="card text-white bg-secondary mb-3">
-                <div class="card-body text-center">
-                    <a href="${cp}/formularios/cidades/listagem.jsp" class="linkdoois">Cidade</a>
-                </div>
-            </div>
-            <div class="card text-white bg-dark mb-3">
-                <div class="card-body text-center" >
-                    <a href="${cp}/formularios/estados/listagem.jsp" class="linkum" >Estado</a>
-                </div>
-            </div>
-
+            <button
+                class="carousel-control-prev"
+                type="button"
+                data-mdb-target="#carouselExampleControls"
+                data-mdb-slide="prev"
+                >
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+                class="carousel-control-next"
+                type="button"
+                data-mdb-target="#carouselExampleControls"
+                data-mdb-slide="next"
+                >
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+
+
 
     </body>
 

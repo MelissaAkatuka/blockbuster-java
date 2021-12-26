@@ -1,12 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
-<c:set var="prefixo" value="processaCidades?acao=preparar"/>
+<c:set var="prefixo" value="processaClassificacaoInterna?acao=preparar"/>
 <!DOCTYPE html>
 
 <html>
   <head>
-    <title>Cidades Cadastradas</title>
+    <title>Classificação Etária</title>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
@@ -16,11 +16,11 @@
 
   <body>
 
-    <h1>Cidades Cadastradas</h1>
+    <h1>Classificação Interna</h1>
 
     <p>
-      <a href="${cp}/formularios/cidades/novo.jsp">
-        Nova Cidade
+      <a href="${cp}/formularios/classificacaointerna/novo.jsp">
+        Nova Classificação Interna
       </a>
     </p>
 
@@ -28,8 +28,8 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>Nome</th>
-          <th>Estado</th>
+          <th>Descrição</th>
+          <th>Valor do Aluguel</th>
           <th>Alterar</th>
           <th>Excluir</th>
         </tr>
@@ -39,20 +39,20 @@
         <jsp:useBean
             id="servicos"
             scope="page"
-            class="locacaomidias.servicos.CidadeServices"/>
+            class="locacaomidias.servicos.ClassificacaoInternaServices"/>
 
-        <c:forEach items="${servicos.todos}" var="cidade">
+        <c:forEach items="${servicos.todos}" var="classificacao">
           <tr>
-            <td>${cidade.id}</td>
-            <td>${cidade.nome}</td>
-            <td>${cidade.estado.sigla}</td>
+            <td>${classificacao.id}</td>
+            <td>${classificacao.descricao}</td>
+            <td>${classificacao.valorAluguel}</td>
             <td>
-              <a href="${cp}/${prefixo}Alteracao&id=${cidade.id}">
+              <a href="${cp}/${prefixo}Alteracao&id=${classificacao.id}">
                 Alterar
               </a>
             </td>
             <td>
-              <a href="${cp}/${prefixo}Exclusao&id=${cidade.id}">
+              <a href="${cp}/${prefixo}Exclusao&id=${classificacao.id}">
                 Excluir
               </a>
             </td>
