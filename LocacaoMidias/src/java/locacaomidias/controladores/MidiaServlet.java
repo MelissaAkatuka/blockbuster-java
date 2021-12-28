@@ -11,15 +11,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import locacaomidias.dao.DVDDAO;
+import locacaomidias.dao.MidiaDAO;
 import locacaomidias.entidades.Ator;
 import locacaomidias.entidades.ClassificacaoEtaria;
-import locacaomidias.entidades.DVD;
+import locacaomidias.entidades.ClassificacaoInterna;
+import locacaomidias.entidades.Midia;
 import locacaomidias.entidades.Genero;
+import locacaomidias.entidades.Tipo;
 
-@WebServlet( name = "DVDServlet", 
+@WebServlet( name = "MidiaServlet", 
              urlPatterns = { "/processaDVDs" } )
-public class DVDServlet extends HttpServlet{
+public class MidiaServlet extends HttpServlet{
     protected void processRequest( 
             HttpServletRequest request, 
             HttpServletResponse response )
@@ -27,130 +29,146 @@ public class DVDServlet extends HttpServlet{
         
         String acao = request.getParameter( "acao" );
         
-        DVDDAO dao = null;
+        MidiaDAO dao = null;
         RequestDispatcher disp = null;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         
         try {
 
-            dao = new DVDDAO();
+            dao = new MidiaDAO();
 
             if ( acao.equals( "inserir" ) ) {
                 
                 String titulo = request.getParameter( "titulo" );
                 String anoLanc = request.getParameter( "anoLanc" );
-                String dataLanc = request.getParameter( "dataLanc" );
+                String codigoBarras = request.getParameter( "codigoBarras" );
                 String duracao = request.getParameter( "duracaoMin" );
                 int atorPrincId = Integer.parseInt( 
                         request.getParameter( "atorPrincId" ) );
                 int atorCoadId = Integer.parseInt( 
                         request.getParameter( "atorCoadId" ) );
-                int classificacaoId = Integer.parseInt( 
-                        request.getParameter( "classificacaoId" ) );
                 int generoId = Integer.parseInt( 
                         request.getParameter( "generoId" ) );
+                int classificacaoEtariaId = Integer.parseInt( 
+                        request.getParameter( "classificacaoEtariaId" ) );
+                int tipoId = Integer.parseInt( 
+                        request.getParameter( "tipoId" ) );
+                int classificacaoInternaId = Integer.parseInt( 
+                        request.getParameter( "classificacaoInternaId" ) );
 
-                DVD dvd = new DVD();
-                ClassificacaoEtaria classificacao = new ClassificacaoEtaria();
+                Midia midia = new Midia();
+                ClassificacaoEtaria classificacaoEtaria = new ClassificacaoEtaria();
                 Genero genero = new Genero();
                 Ator atorPrinc = new Ator();
                 Ator atorCoad = new Ator();
+                Tipo tipo = new Tipo();
+                ClassificacaoInterna classificacaoInterna = new ClassificacaoInterna();
                 
-                dvd.setTitulo(titulo);
-                dvd.setAnoLancamento(Integer.parseInt(anoLanc));
-                dvd.setDataLancamento(Date.valueOf( 
-                        LocalDate.parse( dataLanc, dtf )));
-                dvd.setDuracaoMin(Integer.parseInt(duracao));
-                
-                classificacao.setId(classificacaoId);
-                
-                genero.setId(generoId);
-                
+                midia.setTitulo(titulo);
+                midia.setAnoLancamento(Integer.parseInt(anoLanc));
+                midia.setCodigoBarras(codigoBarras);
+                midia.setDuracaoMin(Integer.parseInt(duracao));
+                               
                 atorPrinc.setId(atorPrincId);
+                midia.setAtorPrincipal(atorPrinc);
                 
                 atorCoad.setId(atorCoadId);
+                midia.setAtorCoadjuvante(atorCoad);
                 
-                dvd.setAtorCoadjuvante(atorCoad);
-                dvd.setAtorPrincipal(atorPrinc);
-                dvd.setClassificacao(classificacao);
-                dvd.setGenero(genero);
+                genero.setId(generoId);
+                midia.setGenero(genero);
                 
-                dao.salvar( dvd );
+                classificacaoEtaria.setId(classificacaoEtariaId); 
+                midia.setClassificacaoEtaria(classificacaoEtaria);
+                
+                tipo.setId(tipoId);
+                midia.setTipo(tipo);
+                
+                classificacaoInterna.setId(classificacaoInternaId);
+                midia.setClassificacaoInterna(classificacaoInterna);
+
+                dao.salvar( midia );
 
                 disp = request.getRequestDispatcher(
-                        "/formularios/dvds/listagem.jsp" );
+                        "/formularios/midia/listagem.jsp" );
 
             } else if ( acao.equals( "alterar" ) ) {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
                 String titulo = request.getParameter( "titulo" );
                 String anoLanc = request.getParameter( "anoLanc" );
-                String dataLanc = request.getParameter( "dataLanc" );
+                String codigoBarras = request.getParameter( "codigoBarras" );
                 String duracao = request.getParameter( "duracaoMin" );
                 int atorPrincId = Integer.parseInt( 
                         request.getParameter( "atorPrincId" ) );
                 int atorCoadId = Integer.parseInt( 
                         request.getParameter( "atorCoadId" ) );
-                int classificacaoId = Integer.parseInt( 
-                        request.getParameter( "classificacaoId" ) );
                 int generoId = Integer.parseInt( 
                         request.getParameter( "generoId" ) );
+                int classificacaoEtariaId = Integer.parseInt( 
+                        request.getParameter( "classificacaoEtariaId" ) );
+                int tipoId = Integer.parseInt( 
+                        request.getParameter( "tipoId" ) );
+                int classificacaoInternaId = Integer.parseInt( 
+                        request.getParameter( "classificacaoInternaId" ) );
 
-                DVD dvd = new DVD();
+                Midia midia = new Midia();
                 ClassificacaoEtaria classificacao = new ClassificacaoEtaria();
                 Genero genero = new Genero();
                 Ator atorPrinc = new Ator();
                 Ator atorCoad = new Ator();
+                Tipo tipo = new Tipo();
+                ClassificacaoInterna classificacaoInterna = new ClassificacaoInterna();
                 
-                dvd.setId(id);
-                dvd.setTitulo(titulo);
-                dvd.setAnoLancamento(Integer.parseInt(anoLanc));
-                dvd.setDataLancamento(Date.valueOf( 
-                        LocalDate.parse( dataLanc, dtf )));
-                dvd.setDuracaoMin(Integer.parseInt(duracao));
-                
-                classificacao.setId(classificacaoId);
-                
-                genero.setId(generoId);
+                midia.setId(id);
+                midia.setTitulo(titulo);
+                midia.setAnoLancamento(Integer.parseInt(anoLanc));
+                midia.setCodigoBarras(codigoBarras);
+                midia.setDuracaoMin(Integer.parseInt(duracao));
                 
                 atorPrinc.setId(atorPrincId);
-                
                 atorCoad.setId(atorCoadId);
+                genero.setId(generoId);
+                classificacao.setId(classificacaoEtariaId);
+                tipo.setId(tipoId);
+                classificacaoInterna.setId(classificacaoInternaId);
                 
-                dvd.setAtorCoadjuvante(atorCoad);
-                dvd.setAtorPrincipal(atorPrinc);
-                dvd.setClassificacao(classificacao);
-                dvd.setGenero(genero);
+                midia.setAtorCoadjuvante(atorCoad);
+                midia.setAtorPrincipal(atorPrinc);
+                midia.setClassificacaoEtaria(classificacao);
+                midia.setGenero(genero);
+                midia.setTipo(tipo);
+                midia.setClassificacaoInterna(classificacaoInterna);
 
-                dao.atualizar( dvd );
+                dao.atualizar( midia );
 
                 disp = request.getRequestDispatcher(
-                        "/formularios/dvds/listagem.jsp" );
+                        "/formularios/midia/listagem.jsp" );
 
             } else if ( acao.equals( "excluir" ) ) {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
 
-                DVD dvd = new DVD();
-                dvd.setId(id);
+                Midia midia = new Midia();
+                midia.setId(id);
                 
-                dao.excluir( dvd );
+                dao.excluir( midia );
 
                 disp = request.getRequestDispatcher(
-                        "/formularios/dvds/listagem.jsp" );
+                        "/formularios/midia/listagem.jsp" );
 
             } else {
                 
                 int id = Integer.parseInt(request.getParameter( "id" ));
-                DVD dvd = dao.obterPorId( id );
-                request.setAttribute( "dvd", dvd );
+                Midia midia = dao.obterPorId( id );
+                request.setAttribute( "midia", midia );
                 
                 if ( acao.equals( "prepararAlteracao" ) ) {
                     disp = request.getRequestDispatcher( 
-                            "/formularios/dvds/alterar.jsp" );
+                            "/formularios/midia/alterar.jsp" );
                 } else if ( acao.equals( "prepararExclusao" ) ) {
                     disp = request.getRequestDispatcher( 
-                            "/formularios/dvds/excluir.jsp" );
+                            "/formularios/midia/excluir.jsp" );
                 }
                 
             }
@@ -191,6 +209,6 @@ public class DVDServlet extends HttpServlet{
 
     @Override
     public String getServletInfo() {
-        return "DVDServlet";
+        return "MidiaServlet";
     }
 }

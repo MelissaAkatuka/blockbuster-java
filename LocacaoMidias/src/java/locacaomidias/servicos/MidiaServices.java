@@ -3,17 +3,17 @@ package locacaomidias.servicos;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import locacaomidias.dao.DVDDAO;
-import locacaomidias.entidades.DVD;
+import locacaomidias.dao.MidiaDAO;
+import locacaomidias.entidades.Midia;
 
-public class DVDServices {
-    public List<DVD> getTodos() {
+public class MidiaServices {
+    public List<Midia> getTodos() {
 
-        List<DVD> lista = new ArrayList<>();
-        DVDDAO dao = null;
+        List<Midia> lista = new ArrayList<>();
+        MidiaDAO dao = null;
 
         try {
-            dao = new DVDDAO();
+            dao = new MidiaDAO();
             lista = dao.listarTodos();
         } catch ( SQLException exc ) {
             exc.printStackTrace();

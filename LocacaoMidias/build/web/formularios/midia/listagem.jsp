@@ -19,7 +19,7 @@
     <h1>Mídias Cadastradas</h1>
 
     <p>
-      <a href="${cp}/formularios/dvds/novo.jsp">
+      <a href="${cp}/formularios/midia/novo.jsp">
         Nova Mídia
       </a>
     </p>
@@ -30,12 +30,15 @@
           <th>Id</th>
           <th>Título</th>
           <th>Ano Lançamento</th>
+          <th>Código de Barras</th>
+          <th>Duração(em minutos)</th>
           <th>Ator/Atriz Principal</th>
           <th>Ator/Atriz Coadjuvante</th>
-          <th>Data Lançamento</th>
-          <th>Duração(em minutos)</th>
           <th>Gênero</th>
           <th>Classificação Etária</th>
+          <th>Tipo</th>
+          <th>Classificação Interna</th>
+
           <th>Alterar</th>
           <th>Excluir</th>
         </tr>
@@ -45,26 +48,28 @@
         <jsp:useBean
             id="servicos"
             scope="page"
-            class="locacaomidias.servicos.DVDServices"/>
+            class="locacaomidias.servicos.MidiaServices"/>
 
-        <c:forEach items="${servicos.todos}" var="dvd">
+        <c:forEach items="${servicos.todos}" var="midia">
           <tr>
-            <td>${dvd.id}</td>
-            <td>${dvd.titulo}</td>
-            <td>${dvd.anoLancamento}</td>
-            <td>${dvd.atorPrincipal.nome} ${dvd.atorPrincipal.sobrenome}</td>
-            <td>${dvd.atorCoadjuvante.nome} ${dvd.atorCoadjuvante.sobrenome}</td>
-            <td>${dvd.dataLancamento}</td>
-            <td>${dvd.duracaoMin}</td>
-            <td>${dvd.genero.descricao}</td>
-            <td>${dvd.classificacao.descricao}</td>
+            <td>${midia.id}</td>
+            <td>${midia.titulo}</td>
+            <td>${midia.anoLancamento}</td>
+            <td>${midia.codigoBarras}</td>
+            <td>${midia.duracaoMin}</td>
+            <td>${midia.atorPrincipal.nome} $midiadvd.atorPrincipal.sobrenome}</td>
+            <td>${midia.atorCoadjuvante.nome} ${midia.atorCoadjuvante.sobrenome}</td>
+            <td>${midia.genero.descricao}</td>
+            <td>${midia.classificacao.descricao}</td>
+            <td>${midia.tipo.descricao}</td>
+            <td>${midia.classificacaoInterna.descricao}</td>
             <td>
-              <a href="${cp}/${prefixo}Alteracao&id=${dvd.id}">
+              <a href="${cp}/${prefixo}Alteracao&id=${midia.id}">
                 Alterar
               </a>
             </td>
             <td>
-              <a href="${cp}/${prefixo}Exclusao&id=${dvd.id}">
+              <a href="${cp}/${prefixo}Exclusao&id=${midia.id}">
                 Excluir
               </a>
             </td>

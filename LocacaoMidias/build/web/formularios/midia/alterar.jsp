@@ -5,7 +5,7 @@
 
 <html>
     <head>
-        <title>Alterar DVD</title>
+        <title>Alterar Midia</title>
         <meta charset="UTF-8">
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0">
@@ -15,12 +15,12 @@
 
     <body>
 
-        <h1>Alterar DVD</h1>
+        <h1>Alterar Midia</h1>
 
         <form method="post"  action="${cp}/processaDVDs">
 
             <input name="acao" type="hidden" value="alterar"/>
-            <input name="id" type="hidden" value="${requestScope.dvd.id}"/>
+            <input name="id" type="hidden" value="${requestScope.midia.id}"/>
 
             <table>
                 
@@ -30,7 +30,7 @@
                         <input name="titulo"
                                type="text"
                                required
-                               value="${requestScope.dvd.titulo}"/>
+                               value="${requestScope.midia.titulo}"/>
                     </td>
                 </tr>
 
@@ -40,7 +40,17 @@
                         <input name="anoLanc"
                                type="text"
                                required
-                               value="${requestScope.dvd.anoLancamento}"/>
+                               value="${requestScope.midia.anoLancamento}"/>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <td class="alinharDireita">Código de Barras: </td>
+                    <td>
+                        <input name="codigoBarras"
+                               type="text"
+                               required
+                               value="${requestScope.midia.codigoBarras}"/>
                     </td>
                 </tr>
 
@@ -50,21 +60,10 @@
                         <input name="duracaoMin"
                                type="text"
                                required
-                               value="${requestScope.dvd.duracaoMin}"/>
+                               value="${requestScope.midia.duracaoMin}"/>
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="alinharDireita">Data de Lançamento:</td>
-                    <td>
-                        <input name="dataLanc"
-                               type="date"
-                               size="8"
-                               placeholder="yyyy-mm-dd"
-                               required
-                               value="${requestScope.dvd.dataLancamento}"/>
-                    </td>
-                </tr>
                 <tr>
                     <td class="alinharDireita">Ator/Atriz Principal: </td>
                     <td>
@@ -72,9 +71,9 @@
                         <jsp:useBean 
                             id="servicos"
                             scope="page"
-                            class="locacaodvds.servicos.AtorServices"/>
+                            class="locacaomidias.servicos.AtorServices"/>
 
-                        <select name="atorPrincId" required value="${requestScope.dvd.atorPrincipal.nome}">
+                        <select name="atorPrincId" required value="${requestScope.midia.atorPrincipal.nome}">
                             <c:forEach items="${servicos.todos}" var="ator">
                                 <option value="${ator.id}">
                                     ${ator.nome}
@@ -92,9 +91,9 @@
                         <jsp:useBean 
                             id="servicos_ator"
                             scope="page"
-                            class="locacaodvds.servicos.AtorServices"/>
+                            class="locacaomidias.servicos.AtorServices"/>
 
-                        <select name="atorCoadId" required value="${requestScope.dvd.atorCoadjuvante.nome}"/>
+                        <select name="atorCoadId" required value="${requestScope.midia.atorCoadjuvante.nome}"/>
                             <c:forEach items="${servicos_ator.todos}" var="ator">
                                 <option value="${ator.id}">
                                     ${ator.nome}
@@ -112,9 +111,9 @@
                         <jsp:useBean 
                             id="servicos_classi"
                             scope="page"
-                            class="locacaodvds.servicos.ClassificacaoEtariaServices"/>
+                            class="locacaomidias.servicos.ClassificacaoEtariaServices"/>
 
-                        <select name="classificacaoId" required value="${requestScope.dvd.classificacao.descricao}"/>
+                        <select name="classificacaoId" required value="${requestScope.midia.classificacao.descricao}"/>
                             <c:forEach items="${servicos_classi.todos}" var="classificacao">
                                 <option value="${classificacao.id}">
                                     ${classificacao.descricao}
@@ -132,9 +131,9 @@
                         <jsp:useBean 
                             id="servicos_gnr"
                             scope="page"
-                            class="locacaodvds.servicos.GeneroServices"/>
+                            class="locacaomidias.servicos.GeneroServices"/>
 
-                        <select name="generoId" required value="${requestScope.dvd.genero.descricao}"/>
+                        <select name="generoId" required value="${requestScope.midia.genero.descricao}"/>
                             <c:forEach items="${servicos_gnr.todos}" var="genero">
                                 <option value="${genero.id}">
                                     ${genero.descricao}
@@ -145,9 +144,47 @@
                     </td>
                 </tr>
                 
-                <tr>
+                 <tr>
+                    <td class="alinharDireita">Tipo: </td>
                     <td>
-                        <a href="${cp}/formularios/dvds/listagem.jsp">Voltar</a>
+
+                        <jsp:useBean 
+                            id="servicos_tipo"
+                            scope="page"
+                            class="locacaomidias.servicos.TipoServices"/>
+
+                        <select name="generoId" required value="${requestScope.midia.tipo.descricao}"/>
+                            <c:forEach items="${servicos_tipo.todos}" var="tipo">
+                                <option value="${tipo.id}">
+                                    ${tipo.descricao}
+                                </option>
+                            </c:forEach>
+                        </select>
+
+                    </td>
+                </tr>               
+                <tr>
+                <tr>
+                    <td class="alinharDireita">Classificação Interna: </td>
+                    <td>
+
+                        <jsp:useBean 
+                            id="servicos_ci"
+                            scope="page"
+                            class="locacaomidias.servicos.ClassificacaoInternaServices"/>
+
+                        <select name="classificacaoId" required value="${requestScope.midia.classificacaoInterna.descricao}"/>
+                            <c:forEach items="${servicos_ci.todos}" var="classificacaoInterna">
+                                <option value="${classificacaoInterna.id}">
+                                    ${classificacaoInterna.descricao}
+                                </option>
+                            </c:forEach>
+                        </select>
+
+                    </td>
+                </tr>                   
+                    <td>
+                        <a href="${cp}/formularios/midias/listagem.jsp">Voltar</a>
                     </td>
                     <td class="alinharDireita">
                         <input type="submit" value="Alterar"/>
