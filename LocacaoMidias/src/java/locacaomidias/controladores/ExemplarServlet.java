@@ -36,8 +36,8 @@ public class ExemplarServlet extends HttpServlet {
 
         try {
             
-            ExemplarDAO daoCidade = new ExemplarDAO();
-            MidiaDAO daoEstado = new MidiaDAO();
+            ExemplarDAO daoExemplar = new ExemplarDAO();
+            MidiaDAO daoMidia = new MidiaDAO();
 
             if ( acao.equals( "inserir" ) ) {
 
