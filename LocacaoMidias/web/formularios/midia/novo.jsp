@@ -127,7 +127,7 @@
                             scope="page"
                             class="locacaomidias.servicos.ClassificacaoEtariaServices"/>
 
-                        <select name="classificacaoId" required>
+                        <select name="classificacaoEtariaId" required>
                             <c:forEach items="${servicos_classi.todos}" var="classificacao">
                                 <option value="${classificacao.id}">
                                     ${classificacao.descricao}
@@ -147,7 +147,7 @@
                             scope="page"
                             class="locacaomidias.servicos.TipoServices"/>
 
-                        <select name="generoId" required>
+                        <select name="tipoId" required>
                             <c:forEach items="${servicos_tipo.todos}" var="tipo">
                                 <option value="${tipo.id}">
                                     ${tipo.descricao}
@@ -167,7 +167,7 @@
                             scope="page"
                             class="locacaomidias.servicos.ClassificacaoInternaServices"/>
 
-                        <select name="classificacaoId" required>
+                        <select name="classificacaoInternaId" required>
                             <c:forEach items="${servicos_ci.todos}" var="ci">
                                 <option value="${ci.id}">
                                     ${ci.descricao}

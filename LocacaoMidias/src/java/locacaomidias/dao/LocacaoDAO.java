@@ -6,12 +6,8 @@
 package locacaomidias.dao;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import locacaomidias.entidades.Cidade;
-import locacaomidias.entidades.Estado;
 import locacaomidias.entidades.Locacao;
 import locacaomidias.utils.Utils;
 

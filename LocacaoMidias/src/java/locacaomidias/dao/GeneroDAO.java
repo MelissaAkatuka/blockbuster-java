@@ -17,7 +17,7 @@ public class GeneroDAO extends DAO<Genero>{
     public void salvar(Genero obj) throws SQLException {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "INSERT INTO " + 
-                "generos(descricao) " + 
+                "genero(descricao) " + 
                 "VALUES(?);" );
 
         stmt.setString( 1, obj.getDescricao() );
@@ -29,7 +29,7 @@ public class GeneroDAO extends DAO<Genero>{
     @Override
     public void atualizar(Genero obj) throws SQLException {
         PreparedStatement stmt = getConnection().prepareStatement(
-                "UPDATE generos " + 
+                "UPDATE genero " + 
                 "SET" + 
                 "    descricao = ?" + 
                 "WHERE" + 
@@ -44,7 +44,7 @@ public class GeneroDAO extends DAO<Genero>{
     @Override
     public void excluir(Genero obj) throws SQLException {
         PreparedStatement stmt = getConnection().prepareStatement(
-                "DELETE FROM generos " + 
+                "DELETE FROM genero " + 
                 "WHERE" + 
                 "    id = ?;" );
 
@@ -61,7 +61,7 @@ public class GeneroDAO extends DAO<Genero>{
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT *" + 
                 "FROM" + 
-                "    generos g " + 
+                "    genero g " + 
                 "ORDER BY g.descricao" );
 
         ResultSet rs = stmt.executeQuery();
@@ -89,7 +89,7 @@ public class GeneroDAO extends DAO<Genero>{
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT *" + 
                 "FROM" + 
-                "    generos g " + 
+                "    genero g " + 
                 "WHERE" + 
                 "    g.id = ?;" );
 

@@ -38,7 +38,7 @@
           <th>Classificação Etária</th>
           <th>Tipo</th>
           <th>Classificação Interna</th>
-
+          <th>Valor do Aluguel</th>
           <th>Alterar</th>
           <th>Excluir</th>
         </tr>
@@ -57,12 +57,13 @@
             <td>${midia.anoLancamento}</td>
             <td>${midia.codigoBarras}</td>
             <td>${midia.duracaoMin}</td>
-            <td>${midia.atorPrincipal.nome} $midiadvd.atorPrincipal.sobrenome}</td>
+            <td>${midia.atorPrincipal.nome} ${midia.atorPrincipal.sobrenome}</td>
             <td>${midia.atorCoadjuvante.nome} ${midia.atorCoadjuvante.sobrenome}</td>
             <td>${midia.genero.descricao}</td>
-            <td>${midia.classificacao.descricao}</td>
+            <td>${midia.classificacaoEtaria.descricao}</td>
             <td>${midia.tipo.descricao}</td>
             <td>${midia.classificacaoInterna.descricao}</td>
+            <td>${midia.classificacaoInterna.valorAluguel}</td>
             <td>
               <a href="${cp}/${prefixo}Alteracao&id=${midia.id}">
                 Alterar

@@ -1,7 +1,4 @@
-    package locacaomidias.entidades;
-
-import java.sql.Date;
-
+package locacaomidias.entidades;
 
 public class Midia {
     
@@ -10,7 +7,6 @@ public class Midia {
     private int anoLancamento;
     private String codigoBarras;
     private int duracaoMin;
-    
     private Ator atorPrincipal;
     private Ator atorCoadjuvante;
     private Genero genero;

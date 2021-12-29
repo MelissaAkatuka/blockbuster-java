@@ -44,7 +44,7 @@ public class ExemplarServlet extends HttpServlet {
                 boolean disponivel = Boolean.parseBoolean(request.getParameter( "estaDisponivel" ));
                 Long idMidia = Utils.getLong(request, "idMidia" );
 
-                Midia m = daoMidia.obterPorId( idMidia );
+                Midia m = daoMidia.obterPorId( Integer.parseInt(idMidia.toString()) );
 
                 Exemplar e = new Exemplar();
                 e.setDisponivel(disponivel);
@@ -60,9 +60,9 @@ public class ExemplarServlet extends HttpServlet {
                 boolean disponivel = Boolean.parseBoolean(request.getParameter( "estaDisponivel" ));
                 Long idMidia = Utils.getLong(request, "idMidia" );
 
-                Midia m = daoMidia.obterPorId( idMidia );
+                Midia m = daoMidia.obterPorId( Integer.parseInt(idMidia.toString()) );
 
-                Exemplar e = daoExemplar.obterPorId( id );
+                Exemplar e = daoExemplar.obterPorId( Integer.parseInt(idMidia.toString()) );
                 e.setDisponivel(disponivel);
                 e.setMidia( m );
 
@@ -74,7 +74,7 @@ public class ExemplarServlet extends HttpServlet {
             } else if ( acao.equals( "excluir" ) ) {
 
                 Long id = Utils.getLong( request, "id" );
-                Exemplar e = daoExemplar.obterPorId( id );
+                Exemplar e = daoExemplar.obterPorId( Integer.parseInt(id.toString()) );
 
                 daoExemplar.excluir( e );
                 disp = request.getRequestDispatcher(
@@ -83,7 +83,7 @@ public class ExemplarServlet extends HttpServlet {
             } else {
                 
                 Long id = Utils.getLong( request, "id" );
-                Exemplar e = daoExemplar.obterPorId( id );
+                Exemplar e = daoExemplar.obterPorId( Integer.parseInt(id.toString()) );
                 request.setAttribute( "exemplar", e );
                 
                 if ( acao.equals( "prepararAlteracao" ) ) {

@@ -60,7 +60,7 @@
         
         <tr>
           <td class="alinharDireita">Classificação Etária:</td>
-          <td>${requestScope.midia.classificacao.descricao}</td>
+          <td>${requestScope.midia.classificacaoEtaria.descricao}</td>
         </tr>
         
          <tr>
@@ -72,6 +72,12 @@
           <td class="alinharDireita">Classificação Interna:</td>
           <td>${requestScope.midia.classificacaoInterna.descricao}</td>
         </tr>
+        
+        <tr>
+          <td class="alinharDireita">Valor do Aluguel:</td>
+          <td>${requestScope.midia.classificacaoInterna.valorAluguel}</td>
+        </tr>
+        
         <tr>
           <td>
             <a href="${cp}/formularios/midia/listagem.jsp">Voltar</a>

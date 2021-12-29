@@ -50,7 +50,7 @@ public class MidiaServlet extends HttpServlet{
                 int generoId = Integer.parseInt( 
                         request.getParameter( "generoId" ) );
                 int classificacaoEtariaId = Integer.parseInt( 
-                        request.getParameter( "classificacaoEtariaId" ) );
+                    request.getParameter( "classificacaoEtariaId" ) );
                 int tipoId = Integer.parseInt( 
                         request.getParameter( "tipoId" ) );
                 int classificacaoInternaId = Integer.parseInt( 

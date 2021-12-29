@@ -113,10 +113,10 @@
                             scope="page"
                             class="locacaomidias.servicos.ClassificacaoEtariaServices"/>
 
-                        <select name="classificacaoId" required value="${requestScope.midia.classificacao.descricao}"/>
-                            <c:forEach items="${servicos_classi.todos}" var="classificacao">
-                                <option value="${classificacao.id}">
-                                    ${classificacao.descricao}
+                        <select name="classificacaoEtariaId" required value="${requestScope.midia.classificacaoEtaria.descricao}"/>
+                            <c:forEach items="${servicos_classi.todos}" var="classificacaoEtaria">
+                                <option value="${classificacaoEtaria.id}">
+                                    ${classificacaoEtaria.descricao}
                                 </option>
                             </c:forEach>
                         </select>
@@ -153,7 +153,7 @@
                             scope="page"
                             class="locacaomidias.servicos.TipoServices"/>
 
-                        <select name="generoId" required value="${requestScope.midia.tipo.descricao}"/>
+                        <select name="tipoId" required value="${requestScope.midia.tipo.descricao}"/>
                             <c:forEach items="${servicos_tipo.todos}" var="tipo">
                                 <option value="${tipo.id}">
                                     ${tipo.descricao}
@@ -163,7 +163,7 @@
 
                     </td>
                 </tr>               
-                <tr>
+
                 <tr>
                     <td class="alinharDireita">Classificação Interna: </td>
                     <td>
@@ -173,7 +173,7 @@
                             scope="page"
                             class="locacaomidias.servicos.ClassificacaoInternaServices"/>
 
-                        <select name="classificacaoId" required value="${requestScope.midia.classificacaoInterna.descricao}"/>
+                        <select name="classificacaoInternaId" required value="${requestScope.midia.classificacaoInterna.descricao}"/>
                             <c:forEach items="${servicos_ci.todos}" var="classificacaoInterna">
                                 <option value="${classificacaoInterna.id}">
                                     ${classificacaoInterna.descricao}
@@ -182,9 +182,10 @@
                         </select>
 
                     </td>
-                </tr>                   
+                </tr>
+                
                     <td>
-                        <a href="${cp}/formularios/midias/listagem.jsp">Voltar</a>
+                        <a href="${cp}/formularios/midia/listagem.jsp">Voltar</a>
                     </td>
                     <td class="alinharDireita">
                         <input type="submit" value="Alterar"/>
