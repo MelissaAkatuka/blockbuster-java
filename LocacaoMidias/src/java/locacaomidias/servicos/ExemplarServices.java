@@ -15,7 +15,7 @@ import locacaomidias.entidades.Exemplar;
  *
  * @author Melissa
  */
-public class ExemplarService {
+public class ExemplarServices {
     
     public List<Exemplar> getTodos() {
         List<Exemplar> lista = new ArrayList<>();

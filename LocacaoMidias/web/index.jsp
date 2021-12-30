@@ -73,8 +73,8 @@
         </div>
 
         <div class="btn-group btn-group-lg p-5" role="group" aria-label="..." style="text-align: center;width:70%">
-            <a href="${cp}/formularios/exemplar/novo.jsp" class="btn btn-secondary btn-lg">Controle de Estoque</a>
-            <a href="${cp}/formularios/exemplar/novo.jsp" class="btn btn-secondary btn-lg">Controle de Locação</a>
+            <a href="${cp}/formularios/exemplar/listagem.jsp" class="btn btn-secondary btn-lg">Controle de Estoque</a>
+            <a href="${cp}/formularios/locacao/listagem.jsp" class="btn btn-secondary btn-lg">Controle de Locação</a>
         </div>
 
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 80%; margin-left: 10%">

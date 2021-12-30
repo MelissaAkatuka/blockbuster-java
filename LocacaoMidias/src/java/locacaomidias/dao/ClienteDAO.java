@@ -177,7 +177,8 @@ public class ClienteDAO extends DAO<Cliente> {
 
     }
 
-    public Cliente obterPorId( Long id ) throws SQLException {
+    @Override
+    public Cliente obterPorId( int id ) throws SQLException {
 
         Cliente cliente = null;
 
@@ -207,7 +208,7 @@ public class ClienteDAO extends DAO<Cliente> {
                 "    c.cidade_id = ci.id AND " +
                 "    ci.estado_id = e.id;" );
 
-        stmt.setLong( 1, id );
+        stmt.setLong( 1, Long.parseLong(String.valueOf(id)) );
 
         ResultSet rs = stmt.executeQuery();
 
@@ -246,9 +247,5 @@ public class ClienteDAO extends DAO<Cliente> {
 
     }
 
-    @Override
-    public Cliente obterPorId(int id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

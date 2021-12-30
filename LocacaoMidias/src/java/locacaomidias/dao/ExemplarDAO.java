@@ -20,6 +20,9 @@ import locacaomidias.entidades.Midia;
  */
 public class ExemplarDAO extends DAO<Exemplar>{
 
+    public ExemplarDAO() throws SQLException {
+    }
+    
     @Override
     public void salvar(Exemplar obj) throws SQLException {
         PreparedStatement stmt = getConnection().prepareStatement(
@@ -43,13 +46,11 @@ public class ExemplarDAO extends DAO<Exemplar>{
                         "UPDATE exemplar " + 
                         "SET" + 
                         "    disponivel = ?" + 
-                        "    midia_id = ?  " +
                         "WHERE" + 
-                        "    id = ?;" );
+                        "    codigo_interno = ?;" );
                 
                 stmt.setBoolean(1, obj.estaDisponivel());
-                stmt.setInt( 2, obj.getMidia().getId());
-                stmt.setInt( 3, obj.getCodigo_interno());
+                stmt.setInt( 2, obj.getCodigo_interno());
 
                 stmt.executeUpdate();
                 stmt.close();
@@ -60,7 +61,7 @@ public class ExemplarDAO extends DAO<Exemplar>{
         PreparedStatement stmt = getConnection().prepareStatement(
                 "DELETE FROM exemplar " + 
                 "WHERE" + 
-                "    id = ?;" );
+                "    codigo_interno = ?;" );
 
         stmt.setInt( 1, obj.getCodigo_interno());
 
@@ -72,22 +73,37 @@ public class ExemplarDAO extends DAO<Exemplar>{
     public List<Exemplar> listarTodos() throws SQLException {
         List<Exemplar> lista = new ArrayList<>();
 
+        MidiaDAO midiadao = new MidiaDAO();
+        
         PreparedStatement stmt = getConnection().prepareStatement(
-                "SELECT *" + 
+                "SELECT" + 
+                "    e.codigo_interno idExemplar, " + 
+                "    e.disponivel disponivel, " +
+                "    m.id idMidia, " + 
+                "    m.titulo titulo " + 
                 "FROM" + 
                 "    exemplar e, " + 
                 "    midia m " + 
                 "WHERE" + 
-                "    e.id = m.midia_id " +
-                "ORDER BY e.disponivel, m.titulo" );
+                "    m.id = e.midia_id AND " +
+                "    e.disponivel = ? " +
+                "ORDER BY m.titulo" );
 
+        stmt.setBoolean(1, true);
         ResultSet rs = stmt.executeQuery();
 
         while ( rs.next() ) {
 
             Exemplar exemplar = new Exemplar();
-            exemplar.setCodigo_interno((rs.getInt( "id" )));
-            exemplar.setDisponivel(true);
+            Midia m = new Midia();
+
+            exemplar.setCodigo_interno(rs.getInt( "idExemplar" ) );
+            exemplar.setDisponivel(rs.getBoolean("disponivel" ) );
+
+            int id = rs.getInt("idMidia" );
+            m = midiadao.obterPorId(id);
+                    
+            exemplar.setMidia( m );
             
             lista.add( exemplar );
 
@@ -105,15 +121,15 @@ public class ExemplarDAO extends DAO<Exemplar>{
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT" + 
-                "    e.id idExemplar, " + 
+                "    e.codigo_interno idExemplar, " + 
                 "    m.id idMidia, " + 
-                "    m.titulo titulo, " + 
+                "    m.titulo titulo " + 
                 "FROM" + 
                 "    exemplar e, " + 
                 "    midia m " + 
                 "WHERE" + 
-                "    e.id = ? AND " + 
-                "    m.midia_id = e.id;" );
+                "    e.codigo_interno = ? AND " + 
+                "    m.id = e.midia_id;" );
 
         stmt.setLong( 1, id );
 
@@ -123,14 +139,14 @@ public class ExemplarDAO extends DAO<Exemplar>{
 
             exemplar = new Exemplar();
             Midia m = new Midia();
-
-            exemplar.setCodigo_interno(rs.getInt( "idExemplar" ) );
-            exemplar.setDisponivel(rs.getBoolean("estaDisponivel" ) );
-            exemplar.setMidia( m );
-
             m.setId(rs.getInt("idMidia" ) );
             m.setTitulo(rs.getString("titulo"));
-
+            
+            exemplar.setCodigo_interno(rs.getInt( "idExemplar" ) );
+            //exemplar.setDisponivel(rs.getBoolean("estaDisponivel" ) );
+            
+            exemplar.setMidia( m );
+            
         }
 
         rs.close();

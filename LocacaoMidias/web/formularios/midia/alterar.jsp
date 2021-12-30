@@ -17,7 +17,7 @@
 
         <h1>Alterar Midia</h1>
 
-        <form method="post"  action="${cp}/processaDVDs">
+        <form method="post"  action="${cp}/processaMidia">
 
             <input name="acao" type="hidden" value="alterar"/>
             <input name="id" type="hidden" value="${requestScope.midia.id}"/>

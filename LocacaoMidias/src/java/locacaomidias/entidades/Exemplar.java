@@ -10,6 +10,7 @@ package locacaomidias.entidades;
  * @author Melissa
  */
 public class Exemplar {
+
     private int codigo_interno;
     private boolean disponivel;
     private Midia midia;

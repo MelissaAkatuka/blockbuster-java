@@ -5,7 +5,7 @@
 
 <html>
     <head>
-        <title>Novo Ator</title>
+        <title>Novo Exemplar</title>
         <meta charset="UTF-8">
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0">
@@ -15,45 +15,49 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     </head>
 
-    <body style="background-color: black">
+    <body>
 
-        <h1>Novo Ator</h1>
+        <h1>Novo Exemplar</h1>
 
         <form class="form-group container" method="post" action="${cp}/processaExemplar" style="background-color: white;">
 
             <input name="acao" type="hidden" value="inserir"/>
 
             <table>
-                <tr>
-                    <td class="alinharDireita">Nome:</td>
+                
+                 <tr>
+                    <td class="alinharDireita">Mídia: </td>
                     <td>
-                        <input name="nome"
-                               type="text"
-                               required/>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Sobrenome:</td>
-                    <td>
-                        <input name="sobrenome"
-                               type="text"
-                               required/>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Data de Estreia:</td>
-                    <td>
-                        <input name="estreia"
-                               type="date"
-                               size="8"
-                               placeholder="yyyy-mm-dd"
-                               required/>
-                    </td>
-                </tr>
 
+                        <jsp:useBean 
+                            id="servicos_midia"
+                            scope="page"
+                            class="locacaomidias.servicos.MidiaServices"/>
+
+                        <select name="idMidia" required>
+                            <c:forEach items="${servicos_midia.todos}" var="midia">
+                                <option value="${midia.id}">
+                                    ${midia.titulo}
+                                </option>
+                            </c:forEach>
+                        </select>
+
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="alinharDireita">Quantidade:</td>
+                    <td>
+                        <input name="qtd"
+                               type="number"
+                               value="1"
+                               required/>
+                    </td>
+                </tr>                
+                
                 <tr>
                     <td>
-                        <a href="${cp}/formularios/atores/listagem.jsp">Voltar</a>
+                        <a href="${cp}/formularios/exemplar/listagem.jsp">Voltar</a>
                     </td>
                     <td class="alinharDireita">
                         <input type="submit" value="Salvar"/>

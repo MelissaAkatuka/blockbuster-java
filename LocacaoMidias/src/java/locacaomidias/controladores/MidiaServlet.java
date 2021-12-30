@@ -11,16 +11,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import locacaomidias.dao.ExemplarDAO;
 import locacaomidias.dao.MidiaDAO;
 import locacaomidias.entidades.Ator;
 import locacaomidias.entidades.ClassificacaoEtaria;
 import locacaomidias.entidades.ClassificacaoInterna;
+import locacaomidias.entidades.Exemplar;
 import locacaomidias.entidades.Midia;
 import locacaomidias.entidades.Genero;
 import locacaomidias.entidades.Tipo;
 
 @WebServlet( name = "MidiaServlet", 
-             urlPatterns = { "/processaDVDs" } )
+             urlPatterns = { "/processaMidia" } )
 public class MidiaServlet extends HttpServlet{
     protected void processRequest( 
             HttpServletRequest request, 
@@ -30,13 +32,15 @@ public class MidiaServlet extends HttpServlet{
         String acao = request.getParameter( "acao" );
         
         MidiaDAO dao = null;
+        ExemplarDAO exemplardao = null;
         RequestDispatcher disp = null;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         
         try {
 
             dao = new MidiaDAO();
-
+            exemplardao = new ExemplarDAO();
+            
             if ( acao.equals( "inserir" ) ) {
                 
                 String titulo = request.getParameter( "titulo" );
@@ -88,6 +92,12 @@ public class MidiaServlet extends HttpServlet{
                 midia.setClassificacaoInterna(classificacaoInterna);
 
                 dao.salvar( midia );
+                
+                Exemplar e = new Exemplar();
+                e.setDisponivel(true);
+                e.setMidia(dao.obterPorCodBarras(midia.getCodigoBarras()));
+                
+                exemplardao.salvar(e);
 
                 disp = request.getRequestDispatcher(
                         "/formularios/midia/listagem.jsp" );

@@ -19,7 +19,7 @@
 
         <h1>Novo Ator</h1>
 
-        <form class="form-group container" method="post" action="${cp}/processaFrutas" style="background-color: white;">
+        <form class="form-group container" method="post" action="${cp}/processaAtores" style="background-color: white;">
 
             <input name="acao" type="hidden" value="inserir"/>
 

@@ -13,25 +13,17 @@ import javax.validation.constraints.NotNull;
  */
 public class Item_Locacao {
     @NotNull
-    private int locacao_id;
+    private Locacao locacao;
     @NotNull
-    private int exemplar_codigo_interno;
+    private Exemplar exemplar;
     private Double valor;
 
-    public int getLocacao_id() {
-        return locacao_id;
+    public Exemplar getExemplar() {
+        return exemplar;
     }
 
-    public void setLocacao_id(int locacao_id) {
-        this.locacao_id = locacao_id;
-    }
-
-    public int getExemplar_codigo_interno() {
-        return exemplar_codigo_interno;
-    }
-
-    public void setExemplar_codigo_interno(int exemplar_codigo_interno) {
-        this.exemplar_codigo_interno = exemplar_codigo_interno;
+    public void setExemplar(Exemplar exemplar) {
+        this.exemplar = exemplar;
     }
 
     public Double getValor() {
@@ -40,6 +32,14 @@ public class Item_Locacao {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public Locacao getLocacao() {
+        return locacao;
+    }
+
+    public void setLocacao(Locacao locacao) {
+        this.locacao = locacao;
     }
     
 }

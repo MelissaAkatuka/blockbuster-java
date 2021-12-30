@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
-<c:set var="prefixo" value="processaDVDs?acao=preparar"/>
+<c:set var="prefixo" value="processaMidia?acao=preparar"/>
 <!DOCTYPE html>
 
 <html>

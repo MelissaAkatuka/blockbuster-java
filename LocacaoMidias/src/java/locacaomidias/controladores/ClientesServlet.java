@@ -84,7 +84,7 @@ public class ClientesServlet extends HttpServlet {
 
                 Cidade ci = daoCidade.obterPorId( idCidade );
 
-                Cliente c = daoCliente.obterPorId( id );
+                Cliente c = daoCliente.obterPorId( Integer.parseInt(id.toString())  );
                 c.setNome( nome );
                 c.setSobrenome( sobrenome );
                 c.setDataNascimento( Utils.getDate( dataNascimento ) );
@@ -104,7 +104,7 @@ public class ClientesServlet extends HttpServlet {
             } else if ( acao.equals( "excluir" ) ) {
 
                 Long id = Utils.getLong( request, "id" );
-                Cliente c = daoCliente.obterPorId( id );
+                Cliente c = daoCliente.obterPorId( Integer.parseInt(id.toString()) );
 
                 daoCliente.excluir( c );
                 disp = request.getRequestDispatcher(
@@ -113,7 +113,7 @@ public class ClientesServlet extends HttpServlet {
             } else {
                 
                 Long id = Utils.getLong( request, "id" );
-                Cliente c = daoCliente.obterPorId( id );
+                Cliente c = daoCliente.obterPorId( Integer.parseInt(id.toString())  );
                 request.setAttribute( "cliente", c );
                 
                 if ( acao.equals( "prepararAlteracao" ) ) {

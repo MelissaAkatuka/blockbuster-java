@@ -303,4 +303,106 @@ public class MidiaDAO extends DAO<Midia>{
         return midia;
     }
     
+    public Midia obterPorCodBarras(String codBarras) throws SQLException {
+        
+        Midia midia = null;
+        PreparedStatement stmt = getConnection().prepareStatement(
+                "SELECT" + 
+                "    d.id midia_id, " +
+                "    d.titulo titulo, " +         
+                "    d.anoLancamento anoLancamento, " + 
+                "    d.codigoBarras codigoBarras, " +
+                "    d.duracaoEmMinutos duracaoMin, " +
+                "    ap.id atorPrincipalId, " + 
+                "    ap.nome atorPrincipalNome, " + 
+                "    ap.sobrenome atorPrincipalSobrenome, " + 
+                "    ap.dataEstreia atorPrincipalEstreia, " + 
+                "    ac.id atorCoadjuvanteId, " + 
+                "    ac.nome atorCoadjuvanteNome, " + 
+                "    ac.dataEstreia atorCoadjuvanteEstreia, " + 
+                "    ac.sobrenome atorCoadjuvanteSobrenome, " + 
+                "    g.id generoId, " + 
+                "    g.descricao generoDescricao, " +
+                "    c.id classificacaoId, " +
+                "    c.descricao classificacaoDesc, " + 
+                "    t.id tipoId, " +
+                "    t.descricao descricaoId, " +
+                "    ci.id classificacaoInternaId, " +
+                "    ci.descricao descricaoClassificacaoInterna, " +
+                "    ci.valorAluguel valorAluguel " +
+                "FROM" + 
+                "    midia d, " + 
+                "    ator_atriz ap, " + 
+                "    ator_atriz ac, " + 
+                "    genero g, " + 
+                "    classificacao_etaria c, " + 
+                "    tipo t, " + 
+                "    classificacao_interna ci " +
+                "WHERE" + 
+                "    d.codigoBarras = ? AND " +
+                "    d.ator_atriz_principal = ap.id AND "+
+                "    d.ator_atriz_coadjuvante = ac.id AND "+
+                "    d.genero_id = g.id AND " +
+                "    d.tipo_id = t.id AND " +
+                "    d.classificacao_interna_id = ci.id AND " +
+                "    d.classificacao_etaria_id = c.id;");
+
+        stmt.setString( 1, codBarras );
+
+        ResultSet rs = stmt.executeQuery();
+        
+        if ( rs.next() ) {
+
+            midia = new Midia();
+            Ator atorPrinc = new Ator();
+            Ator atorCoad = new Ator();
+            Genero genero = new Genero();
+            ClassificacaoEtaria classificacao = new ClassificacaoEtaria();
+            Tipo tipo = new Tipo();
+            ClassificacaoInterna classificacaoInterna = new ClassificacaoInterna();
+            
+            midia.setId(rs.getInt( "midia_id" ));
+            midia.setTitulo( rs.getString("titulo"));
+            midia.setCodigoBarras(rs.getString("codigoBarras"));
+            midia.setDuracaoMin( rs.getInt("duracaoMin"));
+            midia.setAnoLancamento( rs.getInt("anoLancamento"));
+            
+            atorPrinc.setId( rs.getInt("atorPrincipalId"));
+            atorPrinc.setNome( rs.getString("atorPrincipalNome"));
+            atorPrinc.setSobrenome(rs.getString("atorPrincipalSobrenome"));
+            atorPrinc.setDataEstreia(rs.getDate("atorPrincipalEstreia"));
+            
+            atorCoad.setId( rs.getInt("atorCoadjuvanteId"));
+            atorCoad.setNome(rs.getString("atorCoadjuvanteNome"));
+            
+            genero.setId( rs.getInt("generoId"));
+            genero.setDescricao( rs.getString("generoDescricao"));
+                
+            classificacao.setId( rs.getInt("classificacaoId"));
+            classificacao.setDescricao(rs.getString("classificacaoDesc"));
+            atorCoad.setSobrenome(rs.getString("atorCoadjuvanteSobrenome"));
+            atorCoad.setDataEstreia(rs.getDate("atorCoadjuvanteEstreia"));
+            
+            tipo.setId(rs.getInt("tipoId"));
+            tipo.setDescricao(rs.getString("descricaoId"));
+            
+            classificacaoInterna.setId(rs.getInt("classificacaoInternaId"));
+            classificacaoInterna.setDescricao(rs.getString("descricaoClassificacaoInterna"));
+            classificacaoInterna.setValorAluguel(rs.getDouble("valorAluguel"));
+            
+            midia.setAtorPrincipal(atorPrinc);
+            midia.setAtorCoadjuvante(atorCoad);
+            midia.setGenero(genero);
+            midia.setClassificacaoEtaria(classificacao);
+            midia.setTipo(tipo);
+            midia.setClassificacaoInterna(classificacaoInterna);
+
+        }
+
+        rs.close();
+        stmt.close();
+        
+        return midia;
+    }
+    
 }
