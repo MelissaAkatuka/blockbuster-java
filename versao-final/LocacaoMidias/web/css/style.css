@@ -1,0 +1,165 @@
+*,
+body {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+html,
+body {
+  font-family: "Lato", Arial, sans-serif;
+}
+
+.fundo{
+    background-image: url("_Locadora-If.gif");
+}
+
+.logo-imagem{
+    background-image: url("_logo.PNG");
+}
+
+.section-information,
+body {
+/*  background-image: url("Locadora-If.gif");*/
+  background-size: cover;
+}
+
+strong {
+  font-size: 20px;
+}
+
+header .main-header {
+  background-color: transparent;
+}
+
+.main-header {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  z-index: 20;
+  height: 65px;
+  z-index: 999;
+  -webkit-box-shadow: 0px 3px 20px 0px rgba(51, 51, 51, 0.5);
+  box-shadow: 0px 3px 20px 0px rgba(51, 51, 51, 0.5);
+}
+
+.main-header .logo {
+  max-height: 60px;
+}
+
+.main-header .wrap {
+  position: relative;
+  height: inherit;
+}
+
+.wrap {
+  max-width: 1280px;
+  margin: -15px auto;
+  padding: 0 20px;
+}
+
+.main-header .menu-top {
+  list-style: none;
+}
+
+.main-options li {
+  float: left;
+}
+
+.menu-top li:hover {
+  opacity: 0.5;
+}
+
+.main-options li a {
+  font-size: 14px;
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 65px;
+  padding: 0 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.front-page {
+  width: 100%;
+  height: 50px;
+  /* background-image: url('../img/banner.gif'); */
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  display: block;
+  padding: 65px 0px;
+  background-attachment: fixed;
+}
+
+.section-information {
+  width: 100%;
+  padding: 40px 0;
+  background-color: #ffffff;
+  /* opacity: 1.5; */
+}
+
+.section-information.bg-grey {
+  background-color: #f3f3f3;
+}
+
+.section-information .container {
+  width: 100%;
+  max-width: 520px;
+  padding: 0;
+  margin: 0 auto;
+  border-radius: 30px 30px 30px 30px;
+}
+
+.row {
+  margin-left: -5px;
+  margin-right: -5px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+}
+
+.program-title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.title-section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 26px;
+  color: #00c940;
+  font-weight: 900;
+  line-height: 40px;
+  margin-top: 10px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+#btn-save {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
